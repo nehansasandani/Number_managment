@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="header-content">
+    <div class="logo-section">
+      <span class="logo-icon">📱</span>
+      <h1 class="logo-text">Number Management</h1>
+    </div>
+    
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <span>☰</span>
+    </button>
+
+    <nav class="nav-menu" [class.active]="isMenuOpen">
+      <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()" class="nav-item">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+      </a>
+      <a routerLink="/reports" routerLinkActive="active" (click)="closeMenu()" class="nav-item">
+        <span class="nav-icon">📊</span>
+        <span>Reports</span>
+      </a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()" class="nav-item">
+        <span class="nav-icon">📞</span>
+        <span>Contact</span>
+      </a>
+    </nav>
+  </div>
+</header>

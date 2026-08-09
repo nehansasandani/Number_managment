@@ -1,0 +1,81 @@
+<div class="number-management-container">
+  <div class="management-grid">
+    <!-- Left Panel: Selection Form -->
+    <div class="left-panel">
+      <div class="panel-card">
+        <div class="panel-header">
+          <span class="header-icon">📋</span>
+          <h2>Number Management</h2>
+        </div>
+        <p class="panel-subtitle">Select the number block you wish to allocate</p>
+
+        <div class="form-group">
+          <label for="numberLevel" class="form-label">Number Levels <span class="required">*</span></label>
+          <select id="numberLevel" [(ngModel)]="selectedLevel" class="form-control">
+            <option *ngFor="let level of numberLevels" [value]="level">
+              {{ level }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="lea" class="form-label">LEA <span class="required">*</span></label>
+          <select id="lea" [(ngModel)]="selectedLea" class="form-control">
+            <option *ngFor="let lea of leas" [value]="lea">
+              {{ lea }}
+            </option>
+          </select>
+        </div>
+
+        <button (click)="search()" class="btn-search">
+          <span class="search-icon">🔍</span>
+          <span>Search</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Panel: Blocks Display -->
+    <div class="right-panel">
+      <div class="area-code-section">
+        <span class="area-code-icon">ℹ️</span>
+        <span class="area-code-label">Area Code:</span>
+        <span class="area-code-value">{{ selectedAreaCode }}</span>
+      </div>
+
+      <div class="select-block-section">
+        <h3 class="section-title">Select a Block</h3>
+
+        <div class="blocks-grid">
+          <button
+            *ngFor="let blockId of displayedBlocks"
+            (click)="selectBlock(blockId)"
+            [class.active]="blockId === selectedBlock"
+            class="block-button"
+          >
+            {{ blockId }}
+          </button>
+        </div>
+
+        <div class="pagination">
+          <button 
+            (click)="previousPage()" 
+            class="pagination-btn"
+            [disabled]="currentPage === 1"
+          >
+            ←
+          </button>
+          
+          <span class="page-info">Page {{ currentPage }}</span>
+          
+          <button 
+            (click)="nextPage()" 
+            class="pagination-btn"
+            [disabled]="currentPage * blocksPerPage >= numberBlocks.length"
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
