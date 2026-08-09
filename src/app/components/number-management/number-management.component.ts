@@ -32,7 +32,6 @@ export class NumberManagementComponent implements OnInit {
   }
 
   initializeBlocks(): void {
-    // Generate sample blocks from 201 to 300
     this.numberBlocks = Array.from({ length: 100 }, (_, i) => ({
       id: 201 + i,
       areaCode: this.selectedAreaCode
@@ -53,12 +52,6 @@ export class NumberManagementComponent implements OnInit {
   }
 
   search(): void {
-    console.log('Search for:', {
-      level: this.selectedLevel,
-      lea: this.selectedLea,
-      areaCode: this.selectedAreaCode
-    });
-    // Implement search logic here
   }
 
   previousPage(): void {
