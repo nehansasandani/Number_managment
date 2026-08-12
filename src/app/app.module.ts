@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NumberManagementComponent } from './components/number-management/number-management.component';
+import { NumberManagementFormComponent } from './components/number-management-form/number-management-form.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -16,6 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
     AppComponent,
     HeaderComponent,
     NumberManagementComponent,
+    NumberManagementFormComponent,
     HomeComponent,
     ReportsComponent,
     ContactComponent
