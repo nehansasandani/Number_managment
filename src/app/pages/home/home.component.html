@@ -9,3 +9,12 @@
     [filters]="selectedFilters">
   </app-number-management>
 </div>
+
+<!-- TEMPORARY - for previewing block-range-view only -->
+<app-block-range-view
+  *ngIf="showBlockRangeTest"
+  [selectedBlock]="testSelectedBlock"
+  (save)="showBlockRangeTest = false"
+  (cancel)="showBlockRangeTest = false"
+  (closePopup)="showBlockRangeTest = false">
+</app-block-range-view>
