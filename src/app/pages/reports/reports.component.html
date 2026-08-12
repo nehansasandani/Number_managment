@@ -1,6 +1,104 @@
-<div class="reports-container">
+<div class="reports-page">
+
+  <div class="page-header">
+    <span class="page-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <line x1="10" y1="9" x2="8" y2="9"/>
+      </svg>
+    </span>
+    <div>
+      <h1>Reports</h1>
+      <p>View your activity logs</p>
+    </div>
+  </div>
+
   <div class="reports-card">
-    <h2>Reports</h2>
-    <p>Reports page content will be displayed here.</p>
+
+    <div class="filters-row">
+      <div class="filter-group">
+        <label>RTO</label>
+        <select [(ngModel)]="selectedR">
+          <option value="">Select RTO</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Number Level</label>
+        <select [(ngModel)]="selectedNumberLevel">
+          <option value="">Select Number Level</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Block Size</label>
+        <select [(ngModel)]="selectedBlockSize">
+          <option value="">Select Block Size</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Date Issues</label>
+        <input type="date" [(ngModel)]="selectedDate" placeholder="Select Date" />
+      </div>
+
+      <button class="search-btn" (click)="search()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        Search
+      </button>
+    </div>
+
+    <div *ngIf="loading" class="state-message">Loading...</div>
+
+    <div *ngIf="error" class="state-message error">Something went wrong. Please try again.</div>
+
+    <table class="reports-table" *ngIf="hasSearched && !loading && !error && displayedLogs.length > 0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>RTO</th>
+          <th>Number Level</th>
+          <th>Block Size</th>
+          <th>Date Issues</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of displayedLogs; let i = index">
+          <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+          <td>{{ log.r }}</td>
+          <td>{{ log.numberLevel }}</td>
+          <td>{{ log.blockSize }}</td>
+          <td>{{ log.dateIssues }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="hasSearched && !loading && !error && displayedLogs.length === 0" class="state-message">
+      No results found.
+    </div>
+
+    <div class="pagination-row" *ngIf="hasSearched && !loading && !error && displayedLogs.length > 0">
+      <span class="entries-info">
+        Showing {{ startIndex }} to {{ endIndex }} of {{ totalEntries }} entries
+      </span>
+
+      <div class="pagination-controls">
+        <button class="page-btn" (click)="previousPage()" [disabled]="currentPage === 1">‹</button>
+        <button
+          *ngFor="let page of pageNumbers"
+          class="page-btn"
+          [class.active]="page === currentPage"
+          (click)="goToPage(page)"
+        >{{ page }}</button>
+        <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+      </div>
+    </div>
+
   </div>
 </div>
