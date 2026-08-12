@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NumberManagementFilters } from '../number-management-form/number-management-form.component';
 
 interface NumberBlock {
   id: number;
@@ -11,6 +12,8 @@ interface NumberBlock {
   styleUrls: ['./number-management.component.css']
 })
 export class NumberManagementComponent implements OnInit {
+  @Input() filters: NumberManagementFilters | null = null;
+
   numberLevels = ['FTHH', 'STHH', 'THIRD'];
   leas = ['KLY', 'CMB', 'JNP', 'KTY'];
   

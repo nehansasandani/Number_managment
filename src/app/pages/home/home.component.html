@@ -1,3 +1,11 @@
 <div class="home-container">
-  <app-number-management></app-number-management>
+  <app-number-management-form
+    *ngIf="!showBlockSelection"
+    (search)="onFormSearch($event)">
+  </app-number-management-form>
+
+  <app-number-management
+    *ngIf="showBlockSelection"
+    [filters]="selectedFilters">
+  </app-number-management>
 </div>
