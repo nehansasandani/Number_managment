@@ -133,3 +133,14 @@ select, input, textarea {
     opacity: 1;
   }
 }
+
+@keyframes floatIn {
+  from {
+    transform: translateY(18px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

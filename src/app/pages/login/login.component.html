@@ -1,0 +1,48 @@
+<section class="login-screen">
+  <div class="login-panel">
+    <div class="brand-block">
+      <p class="eyebrow">Secure Access</p>
+      <h1>Number Management</h1>
+      <p class="subtitle">Sign in to continue to the portal.</p>
+    </div>
+
+    <form class="login-form" (ngSubmit)="login()">
+      <label>
+        <span>Username</span>
+        <input
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Enter username"
+          autocomplete="username"
+          required
+        />
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        />
+      </label>
+
+      <div class="form-footer">
+        <label class="remember-me">
+          <input type="checkbox" />
+          <span>Remember me</span>
+        </label>
+
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" [disabled]="!username || !password">Login</button>
+    </form>
+
+    <p class="support-note">Need help? Contact your system administrator.</p>
+  </div>
+</section>

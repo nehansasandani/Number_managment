@@ -1,6 +1,6 @@
-<div class="app-container">
-  <app-header></app-header>
-  <main class="main-content">
+<div class="app-container" [class.login-layout]="isLoginPage">
+  <app-header *ngIf="!isLoginPage"></app-header>
+  <main class="main-content" [class.login-page]="isLoginPage">
     <router-outlet></router-outlet>
   </main>
 </div>
