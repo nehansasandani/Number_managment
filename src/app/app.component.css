@@ -4,6 +4,10 @@
   min-height: 100vh;
 }
 
+.app-container.login-layout {
+  min-height: 100vh;
+}
+
 .main-content {
   flex: 1;
   padding: 28px 24px 36px;
@@ -13,6 +17,12 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.58)),
     radial-gradient(circle at top right, rgba(23, 162, 184, 0.14), transparent 30%),
     radial-gradient(circle at bottom left, rgba(30, 144, 255, 0.12), transparent 28%);
+}
+
+.main-content.login-page {
+  display: grid;
+  place-items: center;
+  padding: 24px;
 }
 
 .main-content::before,
@@ -44,5 +54,9 @@
 @media (max-width: 768px) {
   .main-content {
     padding: 14px 12px 22px;
+  }
+
+  .main-content.login-page {
+    padding: 14px;
   }
 }
